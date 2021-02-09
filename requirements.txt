@@ -1,0 +1,17 @@
+#use python 3.6
+
+pip==19.1.1
+moderngl==5.5.2
+moderngl-window==1.5.2
+objloader==0.2.0
+pillow==6.1.0
+pyglet==1.4.2
+pyqt5==5.13.0
+pyrr==0.10.3
+scikit-optimize
+matplotlib==3.1.2
+
+#pywavefront==1.0.4
+tensorflow==1.12.0
+numpy==1.16.4
+
