@@ -25,15 +25,15 @@ def _get_3d_model_folder_path(model_name):
     return path
 
 
-def get_3d_stickers_path(sticker_file_name):
+def get_3d_patch_path(patch_file_name):
     dir_path = os.path.normpath(os.path.abspath(os.path.join(__file__,
                                                              '..',
-                                                             'stickers'))
+                                                             'patches'))
                                 )
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
 
-    file_path = os.path.join(dir_path, sticker_file_name)
+    file_path = os.path.join(dir_path, patch_file_name)
 
     return _return_file_is_exist(file_path)
 

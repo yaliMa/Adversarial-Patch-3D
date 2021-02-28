@@ -10,7 +10,7 @@ from .attack_render import AttackRender
 logger = logging.getLogger(__name__)
 
 # UTILS
-out_dir = os.path.join(os.path.dirname(__file__), '..', 'out')
+out_dir = os.path.join(os.path.dirname(__file__), '..', '..', 'out')
 scene_img_dir = os.path.join(out_dir, 'scene_images')
 patch_tex_dir = os.path.join(out_dir, 'patch_textures')
 perturbation_dir = os.path.join(out_dir, 'perturbations')

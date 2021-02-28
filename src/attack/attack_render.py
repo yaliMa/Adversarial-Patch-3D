@@ -71,7 +71,6 @@ class AttackRender(ABC):
         t_view = tf.contrib.resampler.resampler(t_view, self.t_patch_uv_map)
         t_view = t_view * self.t_patch_light
         t_view = self._combine_patch_and_background(t_view)
-        # t_view = self._add_gaussian_noise(t_view, 0., 0.0005)
 
         return t_view, t_batch_size
 

@@ -118,7 +118,7 @@ class EvalRender(ABC):
 
         return res
 
-    def print_classifications(self, probs, angles, target=363, true=504, batch_size=None, csv_file=None):
+    def print_classifications(self, probs, angles, target, true=504, batch_size=None, csv_file=None):
         probs, angles = np.asarray(probs), np.asarray(angles)
         if probs.shape[0] != angles.shape[0]:
             assert "probs and angles should be from the same length"
