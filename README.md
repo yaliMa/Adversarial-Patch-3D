@@ -14,13 +14,33 @@ If you want to add a new scene then check `mug`, which contains all the files we
 
 Additionally, check `attack`, which contains the two files needed to implement an attack. To create a new attack you can inherit `Attack` or `AttackBatches` (`attack.py`). We recommend using batches because the attack uses a lot of memory due to the data’s size. If you are attacking a new scene, inherit `AttackRender`, as shown in `mug_renderer.py`. You can also use one of the existing attack methods that were used during this study. If you wish to use systematic sampling in your attack you will have to supply the ranges for each transformation. Moreover, if you need to evaluate your attack then inherit `EvalRender` in `eval_renderer.py`. This evaluation process supports different evaluations, including the use of batches.
 
-**TODO: Examples**
+## Examples
+We added to the root directory several examples that can help you reproduce our work, as well as using our code for future work. 
+### Tips
+- In the example files, we marked places that you can change with a comment like `# CHANGE HERE`. Please use search to make sure that you don’t miss anything. If you find a `# TODO` comment with the word “change”, ignore it. This is not for you. We will fix it later. Maybe. 
+- For your convenience, we tried to supply all the examples with the coffee mug true class and armadillo target class (indexes 504 and 363 respectively in the ImageNet dataset). If you see those numbers without an explanation, this is the meaning of this value. In general, if you see an unexplained integer between 100-999, it is probably an index of a class label.
+- If you create a new patch (i.e., a new texture), we highly recommend that you will use an image of size 471x181 px.
+- Make sure that you place your files in the right location. In the examples of the evaluation process, we added comments to explain how to add a patch for evaluation. Please read those comments and follow the instructions. Avoid using the full path if it isn’t needed (i.e., if the example doesn’t use the full path, neither should you). 
+- In some examples, you can find commented code that you can uncomment to get an additional feature (like plotting a graph of the results). However, some examples might contain unused code\parameters. Not everything is a feature. Sorry.
+- When I uploaded the project I reorganized it so it will be easier for you to understand it and use it. It includes changes in files’ location, name changes, etc. I hope I didn’t break everything in the process. The code runs in my old environment, but I still didn’t check it in the new project. I’ll edit this once I’ll make sure that everything runs as it should.
 
-## Evaluation Process
-TBD
+### Crafting the Patches
+`random_attack.py` and `systematic_attack.py` are the attacks we used in the paper to create the random and systematic patches. The parameters in those files are the same as we used in our work. The output of the attack includes the log files and three types of images. The info+ logs will be displayed in your console and the debug+ logs will be available in `/logs/logs.out`. Each run overwrites the old logs. Images of the views that were used in the attack, the patches, and the perturbation are available in the relevant folders in `/out/`. If you try to run the attacks, we strongly suggest that you will start with `random_attack.py`, and change the attack’s parameter to create a lighter attack. By doing so, you can make sure that everything runs without crashing without waiting for the attack to end. A possible configuration can be:
 
-## Our Configuration
-TBD
+```python
+attack = MugAttackBatchesRandomScene(ctx,
+                                     target_class=363,
+                                     true_class=504,
+                                     batch_size=16,
+                                     num_of_batchs=2,
+                                     learning_rate=0.75,
+                                     iteration_num=10,
+                                     iter_to_log=2,
+                                     iter_to_save_img=2)
+```
+
+### Evaluation Process
+
 
 ## A Personal Note
 I planned on publishing my code and resources from the start, so most of the code was written to be as clear as possible. However, there are several patches (not only from the adversarial kind) and probably many hidden bugs. In addition, I started working on this research at the beginning of 2019. Upgrading the packages I used wasn’t always an easy task (especially when it comes to TensorFlow) and as a result, the project uses old packages. I can’t promise an updated version, nor to be available for technical support. Still, I hope you will find this repository (as well as [the instructions for creating the replica and evaluation setup](https://www.instructables.com/Evaluation-Setup-for-Real-World-Adversarial-Patche/)) useful. 
