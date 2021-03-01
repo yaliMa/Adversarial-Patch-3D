@@ -39,7 +39,16 @@ attack = MugAttackBatchesRandomScene(ctx,
                                      iter_to_save_img=2)
 ```
 
+`digital_evaluation.py` and `real_world_evaluation.py` are the base code for our evaluation process in the digital space and the real world respectively. You can use it to reproduce our results. 
+
 ### Evaluation Process
+`digital_evaluation.py` allows you to evaluate a digital patch by rendering the replica from predefined positions. First, place your patch in `/data/patches/`, and add its name to the first line of the main. Don’t write the full path! `digital_evaluation.py` will complete it for you. Write only the name of the patch. To determine the ranges for the camera’s position (polar degrees), change the parameters for `eval_circle`. Then, change the parameters for `print_classifications` according to your needs. Please note that you can change the camera’s position, but the camera will always look at the center of the scene (i.e., the mug). This is a different process from our attack, which rotates and translates the scene in all three axes. Thus, the attack uses all the six degrees of freedom, while the digital evaluation uses less.
+
+`real_world_evaluation.py` can be used to process the video taken by the webcam in our [real-world evaluation setup](https://www.instructables.com/Evaluation-Setup-for-Real-World-Adversarial-Patche/). For each image in the video stream, the code crops the photo to the size of Inception V3 input, feeds it to the classifier, and processes the results. If `REPEAT_CLASSIFY = True`, the program will immediately start classifying the scene until you close it or press `Q`. We strongly suggest leaving If `REPEAT_CLASSIFY = False`, since it allows you the following:
+- When you run the code, a window showing you the scene but will not classify it. 
+- Press `C` to classify a specific frame.
+- Press `S` to start a classification session. The program will keep classifying the frames until you press `S` again. After finishing a classification session, the program will print to the console the summary of the batch’s result.
+- Pressing `Q` will stop the classification (if running), print the summary of the overall results, and exit.
 
 
 ## A Personal Note
