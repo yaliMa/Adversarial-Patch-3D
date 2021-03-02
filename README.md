@@ -21,7 +21,7 @@
 </p>
 
 <p align="center">
-  <img width=80% src="https://github.com/yaliMa/Adversarial-Patch-3D/blob/master/banner.png">
+  <img width=80% src="https://github.com/yaliMa/Adversarial-Patch-3D/blob/master/images/banner.png">
 </p>
 
 
