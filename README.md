@@ -90,9 +90,12 @@ A special thanks to Matan Yesharim who helped me to write this code, overcome de
 ## Citation
 ```
 @article{mathov2021enhancing,
-  title={Enhancing Real-World Adversarial Patches with 3D Modeling Techniques},
+  title={Enhancing Real-World Adversarial Patches Through 3D Modeling of Complex Target Scenes},
   author={Mathov, Yael and Rokach, Lior and Elovici, Yuval},
   journal={arXiv preprint arXiv:2102.05334},
   year={2021}
 }
 ```
+
+## License
+Please check the [LICENSE](https://github.com/yaliMa/Adversarial-Patch-3D/blob/master/LICENSE.md) file for license rights and limitations (Apache 2.0).
